@@ -32,6 +32,12 @@ const Dashboard = () => {
             navigate("/login");
           }
         });
+
+        const checkUser = users.find((el) => el.email === user.email);
+        if (!checkUser) {
+          dispatch(changeUser({}));
+          alert("Your account is deleted!");
+        }
       })
       .catch((err) => console.log(err));
   };
