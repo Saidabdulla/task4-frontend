@@ -7,6 +7,7 @@ import Dashboard from "./components/dashboard";
 import NotFound from "./components/404";
 import "./styles/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ProtectedRoutes from "./protected-routes";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
